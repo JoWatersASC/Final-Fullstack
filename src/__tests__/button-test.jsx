@@ -15,12 +15,10 @@ describe('ParentComponent', () => {
 
     const initialColorIndex = childComponent.prop('colorIndex');
 
-    // Simulate a button click
     childComponent.prop('onClick')(childComponent.prop('id'));
 
     const updatedColorIndex = wrapper.find('ChildComponent').first().prop('colorIndex');
 
-    // Ensure that the color index has changed after the button click
     expect(updatedColorIndex).not.toBe(initialColorIndex);
   });
 });

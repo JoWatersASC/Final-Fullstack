@@ -15,17 +15,14 @@ describe('BasicForm', () => {
     const emailInput = wrapper.find('input[placeholder="Email"]');
     const phoneInput = wrapper.find('input[placeholder="Phone #"]');
     
-    // Simulate input change
     nameInput.simulate('change', { target: { value: 'John Doe' } });
     emailInput.simulate('change', { target: { value: 'john.doe@example.com' } });
     phoneInput.simulate('change', { target: { value: '123-456-7890' } });
     
-    // Simulate form submission
     wrapper.find('form').simulate('submit', { preventDefault: jest.fn() });
 
     const statePeople = wrapper.state('people');
 
-    // Ensure that a person with the provided input is added to the state
     expect(statePeople.length).toBe(1);
     expect(statePeople[0]).toEqual(expect.objectContaining({
       name: 'John Doe',
